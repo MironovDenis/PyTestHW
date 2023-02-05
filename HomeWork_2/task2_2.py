@@ -9,17 +9,26 @@
 4 4 -> 2 2
 5 6 -> 2 3
 """
-
+import math
 s = int(input("Сумма X и Y = "))
 p = int(input("Произведение X и Y = "))
-result = [0, 0]
-for x in range(1001):
-    for y in range(1001):
-        if s == x + y and p == x * y:
-            result.append(x)
-            result.append(y)
-        else: result[0] = -1
-if result[0] == -1:
-    print("Нет решения.")
+
+# result = [0, 0]
+# for x in range(1001):
+#     for y in range(1001):
+#         if s == x + y and p == x * y:
+#             result.append(x)
+#             result.append(y)
+#         else: result[0] = -1
+# if result[0] == -1:
+#     print("Нет решения.")
+# else:
+#     print(f"Число X = {result[0]}, число Y = {result[1]}")
+
+d = s**2 - 4*p
+if d < 0: 
+    print("Нет решения")
 else:
-    print(f"Число X = {result[0]}, число Y = {result[1]}")
+    y = int((s - math.sqrt(d))/2)
+    x = s - y
+    print(f"Число X = {x}, число Y = {y}")
