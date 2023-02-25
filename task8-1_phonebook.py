@@ -41,37 +41,38 @@ def add_contact():
 def del_contact():
     name = input("Введите запрос на удаление: ").title()
     with open('phonebook.txt', 'r', encoding='utf8') as data:
-        with open('phonebook_.txt', 'w', encoding='utf8') as new_data:
+        with open('phonebook_temp.txt', 'w', encoding='utf8') as new_data:
             for line in data:
                 if name not in line:
                     new_data.write(line)
-    with open('phonebook_.txt', 'r', encoding='utf8') as in_data:
+    with open('phonebook_temp.txt', 'r', encoding='utf8') as in_data:
         with open('phonebook.txt', 'w', encoding='utf8') as out_data:
             for line in in_data:
                 out_data.write(line)
-    path = "d:/GEEKBRAINS/Python/Sem_Test_Less/phonebook_.txt"
+    path = "d:/GEEKBRAINS/Python/Sem_Test/phonebook_temp.txt"
     os.remove(path)
 
 def correct_contact():
     name = input("Введите запрос на изменение: ").title()
     with open('phonebook.txt', 'r', encoding='utf8') as data:
-        with open('phonebook_.txt', 'w', encoding='utf8') as new_data:
+        with open('phonebook_temp.txt', 'w', encoding='utf8') as new_data:
             for line in data:
                 if name in line:
-                    new_name = input("Введите корректные данные: ")
+                    new_name = input("Введите корректные данные: ").title()
                     line = line.replace(name, new_name)
                     new_data.write(line)
                 elif name not in line:
                     new_data.write(line)
-    with open('phonebook_.txt', 'r', encoding='utf8') as in_data:
+    with open('phonebook_temp.txt', 'r', encoding='utf8') as in_data:
         with open('phonebook.txt', 'w', encoding='utf8') as out_data:
             for line in in_data:
                 out_data.write(line)
-    path = "d:/GEEKBRAINS/Python/Sem_Test_Less/phonebook_.txt"
+    path = "d:/GEEKBRAINS/Python/Sem_Test/phonebook_temp.txt"
     os.remove(path)
 
-def main_menu(key):
+def main_menu():
     while True:
+        key = int(input('--> '))
         if key == 1:
             all_contacts()
         elif key == 2:
@@ -96,5 +97,5 @@ print(  "- Нажмите 1 для вывода всех контактов\n"
         "- Нажмите 5 для изменения контакта\n"
         "- Нажмите 6 для выхода")
 print()
-key = int(input('--> '))
-main_menu(key)
+
+main_menu()
